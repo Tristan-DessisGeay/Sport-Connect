@@ -1,0 +1,2162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane id="root" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#rootShortcuts" prefHeight="700.0" prefWidth="1000.0" stylesheets="@Ressources/CSS/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.M2L.MyController">
+   <children>
+      <Pane id="fond" layoutX="105.0" layoutY="109.0" prefHeight="551.0" prefWidth="791.0" styleClass="fond" />
+      <Pane id="Background" fx:id="background" prefHeight="700.0" prefWidth="1000.0" styleClass="pageT">
+         <children>
+            <Button id="minimize" fx:id="btnMinimize" layoutX="950.0" layoutY="3.0" mnemonicParsing="false" onAction="#minimize" prefHeight="20.0" prefWidth="20.0" styleClass="btnM" />
+            <Button id="close" fx:id="btnClose" layoutX="975.0" layoutY="3.0" mnemonicParsing="false" onAction="#close" prefHeight="20.0" prefWidth="20.0" styleClass="btnM" />
+            <ImageView fx:id="logo" fitHeight="140.0" fitWidth="600.0" layoutX="195.0" layoutY="315.0" onMousePressed="#elementPressed" onMouseReleased="#logoReleased" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+               <image>
+                  <Image url="@Ressources/Images/logo.gif" />
+               </image></ImageView>
+            <Button layoutX="63.0" layoutY="189.0" mnemonicParsing="false" onAction="#historyBack" prefHeight="400.0" prefWidth="60.0" styleClass="historyBtn" />
+            <Button layoutX="877.0" layoutY="189.0" mnemonicParsing="false" onAction="#historyFord" prefHeight="400.0" prefWidth="60.0" styleClass="historyBtn" />
+            <Pane id="paneAuthentification" fx:id="paneAuthentification" layoutX="294.0" layoutY="185.0" prefHeight="400.0" prefWidth="400.0" styleClass="page" visible="false">
+               <children>
+                  <Label layoutX="25.0" layoutY="50.0" prefHeight="50.0" prefWidth="157.0" text="Identifiant" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="idField" layoutX="25.0" layoutY="100.0" onAction="#nextField" prefHeight="40.0" prefWidth="350.0" styleClass="fieldStyle">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="25.0" layoutY="260.0" prefHeight="50.0" prefWidth="157.0" text="Mot de passe" textFill="WHITE">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="idMdp" layoutX="25.0" layoutY="310.0" onAction="#checkAuthentification" prefHeight="40.0" prefWidth="350.0" styleClass="fieldStyle">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </Pane>
+            <Pane fx:id="mainUI" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Pane fx:id="cadreProchaineCompetition" layoutX="325.0" layoutY="25.0" onMouseClicked="#goToProCompetition" prefHeight="75.0" prefWidth="385.0" style="-fx-cursor: hand;" styleClass="pageT">
+                      <children>
+                          <Label fx:id="prochaineCompetition" layoutX="385.0" layoutY="0.0" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" text="" textAlignment="CENTER" textFill="WHITE">
+	                          <font>
+	                             <Font name="Candara Bold" size="30.0" />
+	                          </font>
+	                      </Label>
+                      </children>
+                  </Pane>
+                  <Button fx:id="btnCompetition" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#displayCompetition" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Compétition">
+                     <font> 
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnEquipe" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#displayEquipe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Equipe" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnPersonne" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#displayPersonne" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Personne">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnParametre" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#displayParametre" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Paramètre">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <PieChart fx:id="diagrammeTypeEquipe" labelLineLength="10.0" labelsVisible="true" layoutX="325.0" layoutY="125.0" legendSide="RIGHT" legendVisible="false" onMouseClicked="#diagrammeTypeEquipeClicked" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="125.0" prefWidth="385.0" title="Types d'équipe" titleSide="RIGHT" />
+                  <PieChart fx:id="diagrammeSportCompetiteur" animated="true" clockwise="true" labelLineLength="10.0" labelsVisible="true" layoutX="325.0" layoutY="340.0" legendSide="LEFT" legendVisible="false" onMouseClicked="#diagrammeSportPratiqueClicked" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="125.0" prefWidth="385.0" title="Sports pratiqués" titleSide="LEFT" />
+               </children>
+            </Pane>
+            <Pane fx:id="parametre" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Button fx:id="btnGeneral" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#paramsGoToGeneral" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" text="Général" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="defaultParams" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="btnMySQL" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#paramsGoToMySQL" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Serveur MySQL" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAide" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#paramsGoToAide" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Aide">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDeconnection" layoutX="5.0" layoutY="25.0" maxHeight="75.0" maxWidth="300.0" mnemonicParsing="false" onAction="#deconnection" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="75.0" prefWidth="300.0" styleClass="section" text="Déconnexion">
+                     <font>
+                        <Font name="Candara Light" size="25.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="paramsDisplayCadre" layoutX="330.0" layoutY="25.0" prefHeight="451.0" prefWidth="375.0" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="affichageParams" styleClass="pageT">
+                           <children>
+                              <Button fx:id="btnApparence" mnemonicParsing="false" onAction="#paramsGoToGeneralApparence" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="124.0" text="Apparence" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="section" />
+                                    <String fx:value="defaultParams" />
+                                 </styleClass>
+                              </Button>
+                              <Button id="btnRaccourcie" fx:id="btnRaccourcie" layoutX="125.5" mnemonicParsing="false" onAction="#paramsGoToGeneralRaccourcie" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="124.0" styleClass="section" text="Raccourcie" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button id="btnSecurite" fx:id="btnSecurite" layoutX="251.0" mnemonicParsing="false" onAction="#paramsGoToGeneralSecurite" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="124.0" styleClass="section" text="Sécurité" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Pane fx:id="generalAffichage" layoutY="55.0" minHeight="396.0" minWidth="375.0" prefHeight="396.0" prefWidth="1175.0" styleClass="pageT">
+                                 <children>
+                                    <Pane fx:id="generalAffichage1" prefHeight="396.0" prefWidth="375.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label fx:id="labelModeSombre" layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Mode sombre">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font></Label>
+                                          <Button fx:id="changeMode" layoutX="270.0" layoutY="25.0" mnemonicParsing="false" onAction="#changeColorMode" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="80.0" text="Off" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass></Button>
+                                       </children>
+                                    </Pane>
+                                    <Pane fx:id="generalAffichage2" layoutX="400.0" prefHeight="396.0" prefWidth="375.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label fx:id="labelRaccourcieDeco" layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Déconnection" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView fx:id="listCtrlDeco" editable="true" layoutX="149.0" layoutY="25.0" prefHeight="30.0" prefWidth="100.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <TextField fx:id="raccourcieFieldDeco" layoutX="250.0" layoutY="25.0" onAction="#setRaccourcieDeco" onKeyTyped="#limitLengthRaccourcieDeco" prefHeight="30.0" prefWidth="100.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="labelRaccourciePagePrec" layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Page précédente" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView fx:id="listCtrlPagePrec" editable="true" layoutX="149.0" layoutY="80.0" prefHeight="30.0" prefWidth="100.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <TextField fx:id="raccourcieFieldPagePrec" layoutX="250.0" layoutY="80.0" onAction="#setRaccourciePagePrec" onKeyTyped="#limitLengthRaccourciePagePrec" prefHeight="30.0" prefWidth="100.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label fx:id="labelRaccourciePageSuiv" layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Page suivante" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView fx:id="listCtrlPageSuiv" editable="true" layoutX="149.0" layoutY="135.0" prefHeight="30.0" prefWidth="100.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <TextField fx:id="raccourcieFieldPageSuiv" layoutX="250.0" layoutY="135.0" onAction="#setRaccourciePageSuiv" onKeyTyped="#limitLengthRaccourciePageSuiv" prefHeight="30.0" prefWidth="100.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                       </children></Pane>
+                                    <Pane fx:id="generalAffichage3" layoutX="800.0" prefHeight="396.0" prefWidth="375.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Identifiant" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="idFieldParam" editable="false" layoutX="190.0" layoutY="25.0" onAction="#nextField" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Ancien mot de passe" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="mdpAncienFieldParam" layoutX="190.0" layoutY="80.0" onAction="#nextField" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Nouveau mot de passe" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="mdpNouveauFieldParam" layoutX="190.0" layoutY="135.0" onAction="#nextField" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </PasswordField>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Confirmer le mot de passe" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="mdpNouveauConfirmFieldParam" layoutX="190.0" layoutY="190.0" onAction="#changeMdp" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </PasswordField>
+                                       </children></Pane>
+                                 </children></Pane>
+                              <Button fx:id="btnInfoBDD" layoutY="476.0" mnemonicParsing="false" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="375" text="Informations" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="section" />
+                                    <String fx:value="defaultParams" />
+                                 </styleClass>
+                              </Button>
+                              <Pane fx:id="mySQLAffichage" layoutY="531.0" minHeight="396.0" minWidth="375.0" prefHeight="396.0" prefWidth="775.0" styleClass="pageT">
+                                 <children>
+                                    <Pane prefHeight="396.0" prefWidth="375.0" styleClass="sectionParams">
+                                        <children>
+                                            <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Adresse IP" textAlignment="CENTER" textFill="WHITE">
+                                               <font>
+                                                  <Font name="Candara Light" size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <TextField fx:id="mysqlServeurIP" editable="true" layoutX="190.0" layoutY="25.0" onAction="#changeServeurMySQLIP" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Port d'accès" textAlignment="CENTER" textFill="WHITE">
+                                               <font>
+                                                  <Font name="Candara Light" size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <TextField fx:id="mysqlServeurPort" editable="true" layoutX="190.0" layoutY="80.0" onAction="#changeServeurMySQLPort" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom de la bdd" textAlignment="CENTER" textFill="WHITE">
+                                               <font>
+                                                  <Font name="Candara Light" size="14.0" />
+                                               </font>
+                                            </Label>
+                                            <TextField fx:id="baseNom" editable="true" layoutX="190.0" layoutY="135.0" onAction="#changeDatabaseName" prefHeight="30.0" prefWidth="160.0">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                          </TextField>
+                                          <Label layoutX="7.0" layoutY="366.0" prefHeight="30.0" styleClass="labelsStyle" text="Veuillez redémarer l'application afin que les changements soient pris en compte" textAlignment="CENTER" textFill="WHITE">
+                                               <font>
+                                                  <Font name="Candara Light" size="11.0" />
+                                               </font>
+                                            </Label>
+                                        </children>
+                                    </Pane>
+                                 </children></Pane>
+                              <Button fx:id="btnAideUtilisation" layoutY="952.0" mnemonicParsing="false" onAction="#paramsGoToAideUtilisation" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="187.5" text="Aide à l'utilisation" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="section" />
+                                    <String fx:value="defaultParams" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btnAideCredits" layoutX="188.25" layoutY="952.0" mnemonicParsing="false" onAction="#paramsGoToAideCredits" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="187.5" styleClass="section" text="Crédits" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Pane fx:id="aideAffichage" layoutY="1007.0" minHeight="396.0" minWidth="375.0" prefHeight="396.0" prefWidth="775.0" styleClass="pageT">
+                                 <children>
+                                    <Pane fx:id="aideAffichage1" prefHeight="396.0" prefWidth="375.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Accéder à l'aide" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button layoutX="270.0" layoutY="25.0" mnemonicParsing="false" onAction="#goToAide" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="80.0" text="Ici" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                          </Button>
+                                       </children></Pane>
+                                    <Pane fx:id="aideAffichage2" layoutX="400.0" prefHeight="451.0" prefWidth="375.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Directeur du projet">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="200.0" layoutY="25.0" prefHeight="30.0" prefWidth="150.0" styleClass="labelsStyle" text="Tristan Dessis-Geay" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="25.0" layoutY="55.0" prefHeight="30.0" styleClass="labelsStyle" text="Designeuse">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutX="200.0" layoutY="55.0" prefHeight="30.0" prefWidth="150.0" styleClass="labelsStyle" text="Loane Aviles" textAlignment="RIGHT">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children></Pane>
+                                 </children></Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="personne" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Button fx:id="personneRechercheB" layoutX="5.0" layoutY="25.0" mnemonicParsing="false" onAction="#personneGoToRechercher" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" text="Rechercher" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="defaultParams" />
+                     </styleClass>
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="personneAjouterB" layoutX="174.5" layoutY="25.0" mnemonicParsing="false" onAction="#personneGoToAjouter" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" styleClass="section" text="Ajouter" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="personneCadreGauche" layoutX="5.0" layoutY="80.0" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="personneContentGauche" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="personneFiltresCadre" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                                 <content>
+                                    <Pane fx:id="personneFiltreContenu" minHeight="465.0" minWidth="337.5" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Prénom">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="prenom" fx:id="personneFiltrePrenom" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="personneFiltrePrenomB" layoutX="152.5" layoutY="25.0" mnemonicParsing="false" onAction="#addFiltrePrenom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="nom" fx:id="personneFiltreNom" layoutX="187.5" layoutY="80.0" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="personneFiltreNomB" layoutX="152.5" layoutY="80.0" mnemonicParsing="false" onAction="#addFiltreNom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Sexe">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="sexe" fx:id="personneFiltreSexe" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="personneFiltreSexeB" layoutX="152.5" layoutY="135.0" mnemonicParsing="false" onAction="#addFiltreSexe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de naissance">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="date_naissance" fx:id="personneFiltreDate" layoutX="187.5" layoutY="190.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="personneFiltreDateB" layoutX="152.5" layoutY="190.0" mnemonicParsing="false" onAction="#addFiltreDate" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Email">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="email" fx:id="personneFiltreEmail" layoutX="187.5" layoutY="245.0" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="personneFiltreEmailB" layoutX="152.5" layoutY="245.0" mnemonicParsing="false" onAction="#addFiltreEmail" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_ville" fx:id="personneFiltreVille" layoutX="187.5" layoutY="300.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="personneFiltreVilleB" layoutX="152.5" layoutY="300.0" mnemonicParsing="false" onAction="#addFiltreVille" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="355.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_sport" fx:id="personneFiltreSport" layoutX="187.5" layoutY="355.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="personneFiltreSportB" layoutX="152.5" layoutY="355.0" mnemonicParsing="false" onAction="#addFiltreSport" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="410.0" prefHeight="30.0" styleClass="labelsStyle" text="Equipe">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_equipe" fx:id="personneFiltreEquipe" layoutX="187.5" layoutY="410.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="personneFiltreEquipeB" layoutX="152.5" layoutY="410.0" mnemonicParsing="false" onAction="#addFiltreEquipe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="personneAjoutCadreB" layoutX="362.5" prefHeight="395.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Button fx:id="personneAjouterNouvelle" layoutX="18.75" layoutY="53.75" mnemonicParsing="false" onAction="#personneAddNouvelle" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Nouvelle Personne">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="personneAjouterModifier" layoutX="18.75" layoutY="167.5" mnemonicParsing="false" onAction="#personneAddModifier" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Modifier">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="personneAjouterSupprimer" layoutX="18.75" layoutY="281.25" mnemonicParsing="false" onAction="#personneAddSupprimer" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Supprimer">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                 </children></Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="personneResultatCadre" layoutX="367.5" layoutY="25.0" prefHeight="450.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="personneContentDroite" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="personneResultatContenu" prefHeight="450.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <content>
+                                    <TableView fx:id="personneDisplayResultT" minHeight="450.0" minWidth="337.5" onMouseClicked="#tableViewDisplaySelection">
+                                       <columns>
+                                          <TableColumn fx:id="personnePrenomC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Prénom" />
+                                          <TableColumn fx:id="personneNomC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                       </columns></TableView>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="personneAjouterChampsContenu" layoutY="475.0" minHeight="450.0" minWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Prénom">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="prenom" fx:id="personneAjouterPrenom" layoutX="187.5" layoutY="25.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="125.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="nom" fx:id="personneAjouterNom" layoutX="187.5" layoutY="80.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="125.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Sexe">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="sexe" fx:id="personneAjouterSexeT" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="sexe" fx:id="personneAjouterSexe" layoutX="250.5" layoutY="135.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de naissance">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="date_naissance" fx:id="personneAjouterDate" layoutX="187.5" layoutY="190.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Email">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="email" fx:id="personneAjouterEmail" layoutX="187.5" layoutY="245.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="125.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_ville" fx:id="personneAjouterVilleT" layoutX="187.5" layoutY="300.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="personneAjouterVille" layoutX="250.5" layoutY="300.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="355.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_sport" fx:id="personneAjouterSportT" layoutX="187.5" layoutY="355.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="personneAjouterSport" layoutX="250.5" layoutY="355.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="410.0" prefHeight="30.0" styleClass="labelsStyle" text="Equipe">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="personneAjouterEquipe" layoutX="187.5" layoutY="410.0" mnemonicParsing="false" onAction="#personneAddGoToEquipe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="125.0" text="→ Equipes">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children></Pane>
+            <Pane fx:id="modificationCompetiteur" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <ScrollPane fx:id="modificationCompetiteurCadre" layoutX="5.0" layoutY="25.0" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                     <content>
+                        <Pane fx:id="modificationCompetiteurContenu" minHeight="465.0" minWidth="700.0" styleClass="sectionParams">
+                           <children>
+                              <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Prénom">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="prenom" fx:id="modificationCompetiteurPrenom" layoutX="475.0" layoutY="25.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="nom" fx:id="modificationCompetiteurNom" layoutX="475.0" layoutY="80.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Sexe">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="sexe" fx:id="modificationCompetiteurSexe" layoutX="475.0" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ListView fx:id="modificationCompetiteurSexeL" layoutX="575.75" layoutY="135.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle" />
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="sans-padding" />
+                                 </styleClass>
+                              </ListView>
+                              <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville d'origine">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="id_ville" fx:id="modificationCompetiteurVille" layoutX="475.0" layoutY="190.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ListView fx:id="modificationCompetiteurVilleL" layoutX="575.75" layoutY="190.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle" />
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="sans-padding" />
+                                 </styleClass>
+                              </ListView>
+                              <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Email">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="email" fx:id="modificationCompetiteurEmail" layoutX="475.0" layoutY="245.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de naissance">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="date_inscription" fx:id="modificationCompetiteurDate" layoutX="475.0" layoutY="300.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0" promptText="aaaa-mm-jj">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="25.0" layoutY="355.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField id="id_sport" fx:id="modificationCompetiteurSport" layoutX="475.0" layoutY="355.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="fieldStyle" />
+                                 </styleClass>
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </TextField>
+                              <ListView fx:id="modificationCompetiteurSportL" layoutX="575.75" layoutY="355.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                 <styleClass>
+                                    <String fx:value="fieldStyle" />
+                                    <String fx:value="fieldStyle-pan" />
+                                    <String fx:value="sans-padding" />
+                                 </styleClass>
+                              </ListView>
+                              <Label layoutX="25.0" layoutY="410.0" prefHeight="30.0" styleClass="labelsStyle" text="Equipe">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="modificationCompetiteurEquipe" layoutX="475.0" layoutY="410.0" mnemonicParsing="false" onAction="#modificationCompetiteurGoToEquipe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="200.0">
+                                 <font>
+                                    <Font name="Candara Light" size="14.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="section" />
+                                    <String fx:value="btnMenu" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="modificationCompetiteurM" layoutX="5.0" layoutY="425.0" mnemonicParsing="false" onAction="#modificationCompetiteurModify" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="349.25" styleClass="section" text="Modifier">
+                     <font>
+                        <Font name="Candara Light" size="20.0" />
+                     </font></Button>
+                  <Button fx:id="modificationCompetiteurS" layoutX="355.75" layoutY="425.0" mnemonicParsing="false" onAction="#modificationCompetiteurDelete" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="349.25" styleClass="section" text="Supprimer">
+                     <font>
+                        <Font name="Candara Light" size="20.0" />
+                     </font></Button>
+               </children>
+            </Pane>
+            <Pane fx:id="cadreActionValidation" layoutX="472.0" layoutY="47.0" prefHeight="60.0" prefWidth="60.0" styleClass="pageT">
+               <children>
+                  <ImageView fx:id="actionValidation" fitHeight="60.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" x="-60.0">
+                     <image>
+                  		<Image url="@Ressources/Images/validationSymboles.png" />
+               		</image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane fx:id="equipe" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Button fx:id="equipeRechercheB" layoutX="5.0" layoutY="25.0" mnemonicParsing="false" onAction="#equipeGoToRechercher" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" text="Rechercher" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="defaultParams" />
+                     </styleClass>
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="equipeAjouterB" layoutX="174.5" layoutY="25.0" mnemonicParsing="false" onAction="#equipeGoToAjouter" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" styleClass="section" text="Ajouter" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="equipeCadreGauche" layoutX="5.0" layoutY="80.0" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="equipeContentGauche" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="equipeFiltresCadre" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                                 <content>
+                                    <Pane fx:id="equipeFiltreContenu" minHeight="395.0" minWidth="337.5" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="nom" fx:id="equipeFiltreNom" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="equipeFiltreNomB" layoutX="152.5" layoutY="25.0" mnemonicParsing="false" onAction="#equipeAddFiltreNom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="type" fx:id="equipeFiltreType" layoutX="187.5" layoutY="80.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="equipeFiltreTypeB" layoutX="152.5" layoutY="80.0" mnemonicParsing="false" onAction="#equipeAddFiltreType" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_ville" fx:id="equipeFiltreVille" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="equipeFiltreVilleB" layoutX="152.5" layoutY="135.0" mnemonicParsing="false" onAction="#equipeAddFiltreVille" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_sport" fx:id="equipeFiltreSport" layoutX="187.5" layoutY="190.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="equipeFiltreSportB" layoutX="152.5" layoutY="190.0" mnemonicParsing="false" onAction="#equipeAddFiltreSport" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="equipeAjoutCadreB" layoutX="362.5" prefHeight="395.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Button fx:id="equipeAjouterNouvelle" layoutX="18.75" layoutY="53.75" mnemonicParsing="false" onAction="#equipeAddNouvelle" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Nouvelle Equipe">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="equipeAjouterModifier" layoutX="18.75" layoutY="167.5" mnemonicParsing="false" onAction="#equipeAddModifier" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Modifier">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="equipeAjouterSupprimer" layoutX="18.75" layoutY="281.25" mnemonicParsing="false" onAction="#equipeAddSupprimer" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Supprimer">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="equipeResultatCadre" layoutX="367.5" layoutY="25.0" prefHeight="450.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="equipeContentDroite" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="equipeResultatContenu" prefHeight="450.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <content>
+                                    <TableView fx:id="equipeDisplayResultT" minHeight="450.0" minWidth="337.5" onMouseClicked="#tableViewDisplaySelection">
+                                       <columns>
+                                          <TableColumn fx:id="equipeNomC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                          <TableColumn fx:id="equipeVilleC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Ville" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="equipeAjouterChampsContenu" layoutY="475.0" minHeight="450.0" minWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="nom" fx:id="equipeAjouterNom" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="type" fx:id="equipeAjouterTypeT" layoutX="187.5" layoutY="80.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="sexe" fx:id="equipeAjouterType" layoutX="250.5" layoutY="80.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_ville" fx:id="equipeAjouterVilleT" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="equipeAjouterVille" layoutX="250.5" layoutY="135.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_sport" fx:id="equipeAjouterSportT" layoutX="187.5" layoutY="190.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="equipeAjouterSport" layoutX="250.5" layoutY="190.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="modificationEquipe" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Pane fx:id="modificationEquipeCadre" layoutX="5.0" layoutY="25.0" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="modificationEquipeContent" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="modificationEquipeCadreTop" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                                 <content>
+                                    <Pane fx:id="modificationEquipeContenu" minHeight="375.0" minWidth="700.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="nom" fx:id="modificationEquipeNom" layoutX="475.0" layoutY="25.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="type" fx:id="modificationEquipeType" layoutX="475.0" layoutY="80.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationEquipeTypeL" layoutX="575.75" layoutY="80.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville d'origine">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_ville" fx:id="modificationEquipeVille" layoutX="475.0" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationEquipeVilleL" layoutX="575.75" layoutY="135.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_sport" fx:id="modificationEquipeSport" layoutX="475.0" layoutY="190.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationEquipeSportL" layoutX="575.75" layoutY="190.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Historique de compétitions">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="modificationEquipeHistorique" layoutX="475.0" layoutY="245.0" mnemonicParsing="false" onAction="#displayHistorique" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="200.0" text="Ici">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass></Button>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="modificationEquipeCadreBottom" layoutY="400.0" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                                 <children>
+                                    <ScrollPane fx:id="equipeModificationFiltresCadre" prefHeight="320.0" prefWidth="337.5" styleClass="pageT">
+                                       <content>
+                                          <Pane fx:id="equipeModificationFiltreContenu" minHeight="345.0" minWidth="337.5" styleClass="sectionParams">
+                                             <children>
+                                                <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Prénom">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField id="prenom" fx:id="equipeModificationFiltrePrenom" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="fieldStyle" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="equipeModificationFiltrePrenomB" layoutX="152.5" layoutY="25.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltrePrenom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField id="nom" fx:id="equipeModificationFiltreNom" layoutX="187.5" layoutY="80.0" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="fieldStyle" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="equipeModificationFiltreNomB" layoutX="152.5" layoutY="80.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltreNom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de naissance">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField id="date_naissance" fx:id="equipeModificationFiltreDateNaissance" layoutX="187.5" layoutY="135.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="fieldStyle" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="equipeModificationFiltreDateNaissanceB" layoutX="152.5" layoutY="135.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltreDateNaissance" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Email">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField id="email" fx:id="equipeModificationFiltreEmail" layoutX="187.5" layoutY="190.0" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="fieldStyle" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="equipeModificationFiltreEmailB" layoutX="152.5" layoutY="190.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltreEmail" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView id="id_ville" fx:id="equipeModificationFiltreVille" layoutX="187.5" layoutY="245.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle" />
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="sans-padding" />
+                                                   </styleClass>
+                                                </ListView>
+                                                <Button fx:id="equipeModificationFiltreVilleB" layoutX="152.5" layoutY="245.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltreVille" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label fx:id="equipeModificationLabelSexe" layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Sexe">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView id="sexe" fx:id="equipeModificationFiltreSexe" layoutX="187.5" layoutY="300.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle" />
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="sans-padding" />
+                                                   </styleClass>
+                                                </ListView>
+                                                <Button fx:id="equipeModificationFiltreSexeB" layoutX="152.5" layoutY="300.0" mnemonicParsing="false" onAction="#equipeModificationAddFiltreSexe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </Pane>
+                                       </content>
+                                    </ScrollPane>
+                                    <ScrollPane fx:id="equipeModificationResultatContenuTop" layoutX="362.5" prefHeight="175.0" prefWidth="337.5" styleClass="sectionParams">
+                                       <content>
+                                          <TableView fx:id="equipeModificationDisplayResultTTop" minHeight="175.0" minWidth="337.5" onMousePressed="#unselectedTableView">
+                                             <columns>
+                                                <TableColumn fx:id="equipeModificationPrenomCTop" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Prénom" />
+                                                <TableColumn fx:id="equipeModificationNomCTop" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                             </columns>
+                                          </TableView>
+                                       </content>
+                                    </ScrollPane>
+                                    <ScrollPane fx:id="equipeModificationResultatContenuBottom" layoutX="362.5" layoutY="200.0" prefHeight="175.0" prefWidth="337.5" styleClass="sectionParams">
+                                       <content>
+                                          <TableView fx:id="equipeModificationDisplayResultTBottom" minHeight="175.0" minWidth="337.5" onMousePressed="#unselectedTableView">
+                                             <columns>
+                                                <TableColumn fx:id="equipeModificationPrenomCBottom" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Prénom" />
+                                                <TableColumn fx:id="equipeModificationNomCBottom" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                             </columns>
+                                          </TableView>
+                                       </content>
+                                    </ScrollPane>
+                                    <Button fx:id="equipeModificationRechercherB" layoutY="345.0" mnemonicParsing="false" onAction="#equipeModificationRechercherBtn" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="337.5" styleClass="section" text="Rechercher">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="modificationEquipeCadreBtn" layoutX="5.0" layoutY="425.0" prefHeight="50.0" prefWidth="700.0" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="modificationEquipeContentBtn" styleClass="pageT">
+                           <children>
+                              <Button fx:id="modificationEquipeM" mnemonicParsing="false" onAction="#modificationEquipeModify" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Modifier">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationEquipeS" layoutX="233.83" mnemonicParsing="false" onAction="#modificationEquipeDelete" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Supprimer">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationEquipeC" layoutX="467.63" mnemonicParsing="false" onAction="#modificationEquipeGoToOtherPart" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Competiteurs de l'équipe">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationEquipeAS" layoutX="701.43" mnemonicParsing="false" onAction="#equipeModificationAddDeleteB" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Ajouter / Supprimer">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationEquipeD" layoutX="935.23" mnemonicParsing="false" onAction="#equipeModificationDetailsPersonne" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Détails de la personne">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="competition" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Button fx:id="competitionRechercheB" layoutX="5.0" layoutY="25.0" mnemonicParsing="false" onAction="#competitionGoToRechercher" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" text="Rechercher" textAlignment="CENTER">
+                     <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="defaultParams" />
+                     </styleClass>
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="competitionAjouterB" layoutX="174.5" layoutY="25.0" mnemonicParsing="false" onAction="#competitionGoToAjouter" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="168.0" styleClass="section" text="Ajouter" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <Pane fx:id="competitionCadreGauche" layoutX="5.0" layoutY="80.0" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="competitionContentGauche" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="competitionFiltresCadre" prefHeight="395.0" prefWidth="337.5" styleClass="pageT">
+                                 <content>
+                                    <Pane fx:id="competitionFiltreContenu" minHeight="395.0" minWidth="337.5" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Libelle">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="libelle" fx:id="competitionFiltreLibelle" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="competitionFiltreLibelleB" layoutX="152.5" layoutY="25.0" mnemonicParsing="false" onAction="#competitionAddFiltreLibelle" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="type" fx:id="competitionFiltreType" layoutX="187.5" layoutY="80.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="competitionFiltreTypeB" layoutX="152.5" layoutY="80.0" mnemonicParsing="false" onAction="#competitionAddFiltreType" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_ville" fx:id="competitionFiltreVille" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="competitionFiltreVilleB" layoutX="152.5" layoutY="135.0" mnemonicParsing="false" onAction="#competitionAddFiltreVille" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ListView id="id_sport" fx:id="competitionFiltreSport" layoutX="187.5" layoutY="190.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Button fx:id="competitionFiltreSportB" layoutX="152.5" layoutY="190.0" mnemonicParsing="false" onAction="#competitionAddFiltreSport" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de début">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="date_debut" fx:id="competitionFiltreDateDebut" layoutX="187.5" layoutY="245.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="competitionFiltreDateDebutB" layoutX="152.5" layoutY="245.0" mnemonicParsing="false" onAction="#competitionAddFiltreDateDebut" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de fin">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="libelle" fx:id="competitionFiltreDateFin" layoutX="187.5" layoutY="300.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="competitionFiltreDateFinB" layoutX="152.5" layoutY="300.0" mnemonicParsing="false" onAction="#competitionAddFiltreDateFin" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                             <styleClass>
+                                                <String fx:value="section" />
+                                                <String fx:value="btnMenu" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="competitionAjoutCadreB" layoutX="362.5" prefHeight="395.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Button fx:id="competitionAjouterNouvelle" layoutX="18.75" layoutY="53.75" mnemonicParsing="false" onAction="#competitionAddNouvelle" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Nouvelle Equipe">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="competitionAjouterModifier" layoutX="18.75" layoutY="167.5" mnemonicParsing="false" onAction="#competitionAddModifier" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Modifier">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                    <Button fx:id="competitionAjouterSupprimer" layoutX="18.75" layoutY="281.25" mnemonicParsing="false" onAction="#competitionAddSupprimer" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="60.0" prefWidth="300.0" text="Supprimer">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="section" />
+                                          <String fx:value="btnMenu" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="competitionResultatCadre" layoutX="367.5" layoutY="25.0" prefHeight="450.0" prefWidth="337.5" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="competitionContentDroite" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="competitionResultatContenu" prefHeight="450.0" prefWidth="337.5" styleClass="sectionParams">
+                                 <content>
+                                    <TableView fx:id="competitionDisplayResultT" minHeight="450.0" minWidth="337.5" onMouseClicked="#tableViewDisplaySelection">
+                                       <columns>
+                                          <TableColumn fx:id="competitionLibelleC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Libelle" />
+                                          <TableColumn fx:id="competitionTypeC" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Type" />
+                                       </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="competitionAjouterChampsContenu" layoutY="475.0" minHeight="450.0" minWidth="337.5" styleClass="sectionParams">
+                                 <children>
+                                    <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Libelle">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="libelle" fx:id="competitionAjouterLibelle" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="type" fx:id="competitionAjouterTypeT" layoutX="187.5" layoutY="80.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="sexe" fx:id="competitionAjouterType" layoutX="250.5" layoutY="80.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_ville" fx:id="competitionAjouterVilleT" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="competitionAjouterVille" layoutX="250.5" layoutY="135.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="id_sport" fx:id="competitionAjouterSportT" layoutX="187.5" layoutY="190.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="62.0">
+                                       <font>
+                                          <Font name="Candara Light" size="12.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                    </TextField>
+                                    <ListView id="id_ville" fx:id="competitionAjouterSport" layoutX="250.5" layoutY="190.0" onKeyPressed="#unselectedListView" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="62.0">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle" />
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="sans-padding" />
+                                       </styleClass>
+                                    </ListView>
+                                    <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de début">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="date_debut" fx:id="competitionAjouterDateDebutT" layoutX="187.5" layoutY="245.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de fin">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField id="date_fin" fx:id="competitionAjouterDateFinT" layoutX="187.5" layoutY="300.0" prefHeight="30.0" prefWidth="125.0" promptText="aaaa-mm-jj">
+                                       <styleClass>
+                                          <String fx:value="fieldStyle-pan" />
+                                          <String fx:value="fieldStyle" />
+                                       </styleClass>
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="modificationCompetition" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Pane fx:id="modificationCompetitionCadre" layoutX="5.0" layoutY="25.0" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="modificationCompetitionContent" styleClass="pageT">
+                           <children>
+                              <ScrollPane fx:id="modificationCompetitionCadreTop" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                                 <content>
+                                    <Pane fx:id="modificationCompetitionContenu" minHeight="375.0" minWidth="700.0" styleClass="sectionParams">
+                                       <children>
+                                          <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="libelle" fx:id="modificationCompetitionLibelle" layoutX="475.0" layoutY="25.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="type" fx:id="modificationCompetitionType" layoutX="475.0" layoutY="80.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationCompetitionTypeL" layoutX="575.75" layoutY="80.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville d'origine">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_ville" fx:id="modificationCompetitionVille" layoutX="475.0" layoutY="135.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationCompetitionVilleL" layoutX="575.75" layoutY="135.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="190.0" prefHeight="30.0" styleClass="labelsStyle" text="Sport">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="id_sport" fx:id="modificationCompetitionSport" layoutX="475.0" layoutY="190.0" onKeyPressed="#unselectedListViewFromKeyOnTextField" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <ListView fx:id="modificationCompetitionSportL" layoutX="575.75" layoutY="190.0" onMouseClicked="#changeTextFieldValueFromListView" prefHeight="30.0" prefWidth="99.25">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle" />
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="sans-padding" />
+                                             </styleClass>
+                                          </ListView>
+                                          <Label layoutX="25.0" layoutY="245.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de début">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="date_debut" fx:id="modificationCompetitionDateDebut" layoutX="475.0" layoutY="245.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0" promptText="aaaa-mm-jj">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                          <Label layoutX="25.0" layoutY="300.0" prefHeight="30.0" styleClass="labelsStyle" text="Date de fin">
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField id="date_fin" fx:id="modificationCompetitionDateFin" layoutX="475.0" layoutY="300.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="200.0" promptText="aaaa-mm-jj">
+                                             <styleClass>
+                                                <String fx:value="fieldStyle-pan" />
+                                                <String fx:value="fieldStyle" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Candara Light" size="14.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                              <Pane fx:id="modificationCompetitionCadreBottom" layoutY="400.0" prefHeight="375.0" prefWidth="700.0" styleClass="pageT">
+                                 <children>
+                                    <ScrollPane fx:id="competitionModificationFiltresCadre" prefHeight="320.0" prefWidth="337.5" styleClass="pageT">
+                                       <content>
+                                          <Pane fx:id="competitionModificationFiltreContenu" minHeight="345.0" minWidth="337.5" styleClass="sectionParams">
+                                             <children>
+                                                <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" styleClass="labelsStyle" text="Nom">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField id="nom" fx:id="competitionModificationFiltreNom" layoutX="187.5" layoutY="25.0" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="fieldStyle" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="competitionModificationFiltreNomB" layoutX="152.5" layoutY="25.0" mnemonicParsing="false" onAction="#competitionModificationAddFiltreNom" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" styleClass="labelsStyle" text="Ville">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView id="id_ville" fx:id="competitionModificationFiltreVille" layoutX="187.5" layoutY="80.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle" />
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="sans-padding" />
+                                                   </styleClass>
+                                                </ListView>
+                                                <Button fx:id="competitionModificationFiltreVilleB" layoutX="152.5" layoutY="80.0" mnemonicParsing="false" onAction="#competitionModificationAddFiltreVille" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                                <Label fx:id="competitionModificationLabelType" layoutX="25.0" layoutY="135.0" prefHeight="30.0" styleClass="labelsStyle" text="Type">
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Label>
+                                                <ListView id="type" fx:id="competitionModificationFiltreType" layoutX="187.5" layoutY="135.0" onKeyPressed="#unselectedListView" prefHeight="30.0" prefWidth="125.0">
+                                                   <styleClass>
+                                                      <String fx:value="fieldStyle" />
+                                                      <String fx:value="fieldStyle-pan" />
+                                                      <String fx:value="sans-padding" />
+                                                   </styleClass>
+                                                </ListView>
+                                                <Button fx:id="competitionModificationFiltreTypeB" layoutX="152.5" layoutY="135.0" mnemonicParsing="false" onAction="#competitionModificationAddFiltreType" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="30.0" text="+">
+                                                   <styleClass>
+                                                      <String fx:value="section" />
+                                                      <String fx:value="btnMenu" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Candara Light" size="14.0" />
+                                                   </font>
+                                                </Button>
+                                             </children>
+                                          </Pane>
+                                       </content>
+                                    </ScrollPane>
+                                    <ScrollPane fx:id="competitionModificationResultatContenuTop" layoutX="362.5" prefHeight="175.0" prefWidth="337.5" styleClass="sectionParams">
+                                       <content>
+                                          <TableView fx:id="competitionModificationDisplayResultTTop" minHeight="175.0" minWidth="337.5" onMousePressed="#unselectedTableView">
+                                             <columns>
+                                                <TableColumn fx:id="competitionModificationNomCTop" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                                <TableColumn fx:id="competitionModificationVilleCTop" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Ville" />
+                                             </columns>
+                                          </TableView>
+                                       </content>
+                                    </ScrollPane>
+                                    <ScrollPane fx:id="competitionModificationResultatContenuBottom" layoutX="362.5" layoutY="200.0" prefHeight="175.0" prefWidth="337.5" styleClass="sectionParams">
+                                       <content>
+                                          <TableView fx:id="competitionModificationDisplayResultTBottom" minHeight="175.0" minWidth="337.5" onMousePressed="#unselectedTableView">
+                                             <columns>
+                                                <TableColumn fx:id="competitionModificationNomCBottom" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                                                <TableColumn fx:id="competitionModificationVilleCBottom" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Ville" />
+                                             </columns>
+                                          </TableView>
+                                       </content>
+                                    </ScrollPane>
+                                    <Button fx:id="competitionModificationRechercherB" layoutY="345.0" mnemonicParsing="false" onAction="#competitionModificationRechercherBtn" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="337.5" styleClass="section" text="Rechercher">
+                                       <font>
+                                          <Font name="Candara Light" size="14.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="modificationCompetitionCadreBtn" layoutX="5.0" layoutY="425.0" prefHeight="50.0" prefWidth="700.0" styleClass="pageT">
+                     <children>
+                        <Pane fx:id="modificationCompetitionContentBtn" styleClass="pageT">
+                           <children>
+                              <Button fx:id="modificationCompetitionM" mnemonicParsing="false" onAction="#modificationCompetitionModify" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Modifier">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationCompetitionS" layoutX="233.83" mnemonicParsing="false" onAction="#modificationCompetitionDelete" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Supprimer">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationCompetitionE" layoutX="467.63" mnemonicParsing="false" onAction="#modificationCompetitionGoToOtherPart" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Inscription des équipes">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationCompetitionAS" layoutX="701.43" mnemonicParsing="false" onAction="#competitionModificationAddDeleteB" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Ajouter / Supprimer">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="modificationCompetitionD" layoutX="935.23" mnemonicParsing="false" onAction="#competitionModificationDetailsEquipe" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="50.0" prefWidth="232.3" styleClass="section" text="Détails de l'équipe">
+                                 <font>
+                                    <Font name="Candara Light" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="equipeModificationHistoriquePage" layoutX="146.0" layoutY="134.0" prefHeight="500.0" prefWidth="710.0" styleClass="page" visible="false">
+               <children>
+                  <Pane fx:id="equipeModificationHistoriqueFilters" layoutX="5" layoutY="25" prefHeight="395.0" prefWidth="337.5" styleClass="sectionParams">
+                     <children>
+                        <Label layoutX="25.0" layoutY="25.0" prefHeight="30.0" text="Date de début">
+                           <font>
+                              <Font name="Candara Light" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField id="date_debut" fx:id="equipeModificationHistoriqueDateDebut" layoutX="152.5" layoutY="25.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="160.0" promptText="aaaa-mm-jj">
+                           <styleClass>
+                              <String fx:value="fieldStyle-pan" />
+                              <String fx:value="fieldStyle" />
+                           </styleClass>
+                           <font>
+                              <Font name="Candara Light" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="25.0" layoutY="80.0" prefHeight="30.0" text="Date de fin">
+                           <font>
+                              <Font name="Candara Light" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField id="date_fin" fx:id="equipeModificationHistoriqueDateFin" layoutX="152.5" layoutY="80.0" onKeyPressed="#textFieldModified" prefHeight="30.0" prefWidth="160.0" promptText="aaaa-mm-jj">
+                           <styleClass>
+                              <String fx:value="fieldStyle-pan" />
+                              <String fx:value="fieldStyle" />
+                           </styleClass>
+                           <font>
+                              <Font name="Candara Light" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children></Pane>
+                  <Button fx:id="equipeModificationHistoriqueRechercher" layoutX="5" layoutY="445.0" mnemonicParsing="false" onAction="#equipeModificationHistoriqueLancerRecherche" onMousePressed="#elementPressed" onMouseReleased="#elementReleased" prefHeight="30.0" prefWidth="337.5" styleClass="section" text="Rechercher">
+                     <font>
+                        <Font name="Candara Light" size="14.0" />
+                     </font>
+                  </Button>
+                  <ScrollPane fx:id="equipeModificationHistoriqueResultats" layoutX="362.5" layoutY="25" prefHeight="450.0" prefWidth="337.5" styleClass="sectionParams">
+                     <content>
+                        <TableView fx:id="equipeModificationHistoriqueResultatsTable" minHeight="175.0" minWidth="337.5" onMouseClicked="#tableViewDisplaySelection" prefHeight="450.0" prefWidth="337.5">
+                           <columns>
+                              <TableColumn fx:id="equipeModificationHistoriqueResultatsNom" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Nom" />
+                              <TableColumn fx:id="equipeModificationHistoriqueResultatsVille" maxWidth="-Infinity" minWidth="168.75" prefWidth="168.75" text="Ville" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</Pane>

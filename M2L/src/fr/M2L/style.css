@@ -1,0 +1,112 @@
+*{
+	-fx-padding: 0;
+}
+#root{
+	-fx-background-color: transparent;
+}
+#fond{
+	-fx-background-color: rgba(180,180,180,0.5);
+}
+#Background{
+	-fx-background-image: url("background.gif");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+}
+#close{
+	-fx-background-image: url("croix.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+}
+#minimize{
+	-fx-background-image: url("trait.png");
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+}
+.page{
+	-fx-opacity: 0;
+	-fx-background-color: transparent;
+}
+.fieldStyle{
+	-fx-padding: 5 10 5 10;
+	-fx-background-color: white;
+}
+.section{
+	-fx-background-color: white;
+	-fx-cursor: hand;
+}
+.pageT{
+	-fx-background-color: transparent;
+	-fx-border-radius: 3;
+	-fx-background-radius: 3;
+}
+.defaultParams{
+	-fx-background-color: rgb(150,150,150);
+	-fx-text-fill: white;
+}
+.sectionParams{
+	-fx-background-color: white;
+	-fx-border-radius: 3;
+	-fx-background-radius: 3;
+}
+.btnMenu{
+	-fx-background-color: white;
+	-fx-text-fill: black;
+	-fx-border-width: 0.5;
+	-fx-border-color: black;
+	-fx-background-radius: 3;
+	-fx-border-radius: 3;
+}
+.labelsStyle{
+	-fx-text-fill: black;
+}
+.fieldStyle-pan{
+	-fx-background-radius: 3;
+	-fx-border-radius: 3;
+	-fx-border-width: 0.5;
+	-fx-border-color: black;
+}
+.sans-padding{
+	-fx-padding: 0;
+	-fx-background-color: rgb(150,150,150);
+}
+.historyBtn{
+	-fx-background-color: transparent;
+	-fx-cursor: hand;
+}
+.table-column{
+    -fx-alignment: center;
+}
+.table-row-cell:hover,.table-row-cell:selected,.table-row-cell:odd:hover,.table-row-cell:odd:selected,.list-cell:hover,.list-cell:selected,.list-cell:even:hover,.list-cell:even:selected{
+	-fx-cursor: hand;
+    -fx-background-color: rgb(150,150,150);
+    -fx-text-background-color: white;
+}
+.table-view .column-header-background{
+	-fx-background-color: rgb(200,200,200);
+	-fx-text-background-color: black;
+	-fx-background-radius: 3;
+	-fx-border-radius: 3;
+}
+.table-row-cell,.list-cell:even{
+	-fx-background-color: white;
+}
+.table-row-cell:odd,.list-cell{
+	-fx-background-color: rgb(240,240,240);
+}
+.scroll-pane *, .scroll-pane, .table-view *, .table-view {
+   -fx-background-radius: 3;
+}
+.chart *{
+	-fx-cursor: hand;
+}
+.chart-title,.chart-pie-label{
+	-fx-text-fill: white;
+	-fx-fill: white;
+}
+.chart-pie-label{ 
+    -fx-font-size: 12px;
+} 
